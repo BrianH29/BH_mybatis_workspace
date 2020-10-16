@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<!--   
+		* MyBatis를 사용하기 위해 mybatis 관련 라이브러리도 추가행됨 (SqlSession, Resource, ...)
+		- 마이바티스 한국 사이트 들어가기(북마크 추가)
+		- 시작하기 => mybatis-x.x.x.jar 클릭 => github로 이동 => 최신버전 클릭 
+		- zip 다운받은 후 => zip pull해서 해다 jar 파일 => webapp\WEB-INF\lib\추가
+	-->
+</body>
+</html>
