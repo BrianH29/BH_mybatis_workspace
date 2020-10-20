@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="../common/menubar.jsp">
+	<jsp:include page="../common/menubar.jsp" />
 	
 	    <div class="outer">
       <h1 align="center">회원가입</h1>
@@ -41,7 +41,7 @@
             <td align="center">
               <input type="radio" name="gender" value="M" />남
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="radio" name="gender" vaule="F" />여
+              <input type="radio" name="gender" value="F" />여
             </td>
           </tr>
           <tr>
