@@ -4,6 +4,38 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <!-- mapper의 namespace 먼저 지정!!!(이 메퍼 파일의 고유 별칭 같은것 -->
 <mapper namespace="memberMapper">
+	
+	<!-- 
+		type 완래는 com.kh.mybatis.member.model.vo.Member
+		그러나 너무 길기 때문에 mybatis-config.xml에 typeAlias에 별칭으로 부여해서 간다하게 사용
+		
+		**resultMap : myBatis 핵심적인 기능 중 하나!!
+					  조회결과를 어떤 객체에 매핑 시켜서 반화할껀지 정의해두는 태그
+					  
+		 - id : 각 resultMap 마다의 고유 식별자
+		 - type : ResultSet에 조회된 값뽑아서 어떤 타입의 vo객체 담아서 반화할 건지(풀네임 또는 별칭)
+		
+	 -->
+	<resultMap id="memberResultSet" type="Member">
+		<!-- 
+			column: 조회된 결과중 어떤 컬럼명에 해당하는걸 뽑을 건지(SELECT 절에 제시되어있는 컬럼명)
+			property: (필드명) 그 뽑은 값을 해당 타입의 객체에 어떤 필드에 담을건지(담고자 하는 객체의 필드명)
+		 -->
+		 <!-- DB에서의 기본키(PK) -->
+		<id column="USER_NO" property="userNo" />
+		<!-- DB에서의 일반컬럼 -->
+		<result column="USER_PWD" property="userPwd" />
+		<result column="USER_ID" property="userId" />
+		<result column="USER_NAME" property="userName" />
+		<result column="email" property="email" />
+		<result column="birthday" property="birthday" />
+		<result column="gender" property="gender" />
+		<result column="phone" property="phone" />
+		<result column="ADDRESS" property="address" />
+		<result column="ENROLL_DATE" property="enrollDate" />
+		<result column="MODIFY_DATE" property="modifyDate" />
+		<result column="status" property="status" />
+	</resultMap>
 
 	<!-- 
 		< 주의사항 > 
@@ -65,11 +97,22 @@
 		- resultType/resultMap : 해당 select문 실행할 결과를 반환할 타입
 								 즉, 조회된 결과(ResultSet)을 자바에서의 
 								 어떤 자료형에 담아서 반환할껀지
+		
+		> resultType에 어떤 객체의 타입을 기술하게 되면
+		  조회된 결과가 해당 객체에 해당 필드에 매핑되서 리턴됨
+		  (단, DB컬럼명과 객체의 필드명이 일치할 경우)
+		  
+		  현재 상황을 보면 Member 테이블의 컬러명과 Member클래스의 필드명이 다르다!!
+		 직접 어떤 컬럼의 값 뽑아서 어떤 필드에 담을껀지 mapping 시켜주면됨.
+		 =>resultMap 태그를 통해서 정의
+		 
+		> 
+		  
 	 -->
 	
 	<select id="loginMember"
 	         parameterType="com.kh.mybatis.member.model.vo.Member"
-	         resultMap="">
+	         resultMap="memberResultSet">
 		SELECT 
 		       USER_NO
 		     , USER_ID

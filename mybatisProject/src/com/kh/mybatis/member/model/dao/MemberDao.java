@@ -24,6 +24,7 @@ public class MemberDao {
 		//Member loginUser = sqlSession.selectOne("memberMapper.loginMember", m);
 		//return loginUser;
 		return sqlSession.selectOne("memberMapper.loginMember", m); 
+		// selectOne 만약없나면 null 반환
 	}
 
 }

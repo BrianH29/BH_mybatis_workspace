@@ -89,7 +89,7 @@
 		          </tr>
 		          <tr>
 		            <td><a href="">my page</a></td>
-		            <td><a href="">logout</a></td>
+		            <td><a href="logout.me">logout</a></td>
 		          </tr>
 		        </table>
 		      </div>
@@ -100,7 +100,7 @@
     <div class="nav-area" align="center">
       <div class="menu">HOME</div>
       <div class="menu">공지사항</div>
-      <div class="menu">게시판</div>
+      <div class="menu" onclick="location.href='list.bo?currentPage=1';">게시판</div> <!-- location.href 자바스크립트 -->
       <div class="menu">ETC</div>
     </div>
 </body>
