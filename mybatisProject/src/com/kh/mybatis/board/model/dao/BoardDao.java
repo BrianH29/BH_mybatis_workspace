@@ -6,6 +6,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.mybatis.board.model.vo.Board;
+import com.kh.mybatis.board.model.vo.Reply;
+import com.kh.mybatis.board.model.vo.SearchCondition;
 import com.kh.mybatis.common.vo.PageInfo;
 
 public class BoardDao {
@@ -35,9 +37,39 @@ public class BoardDao {
 		int offset = (pi.getCurrentPage() - 1) * pi.getBoardLimit();
 		int limit = pi.getBoardLimit();
 		
+		//** 페이징 처리에 매우 중요함.(mybatis 에서 사용)
 		RowBounds rowBounds = new RowBounds(offset, limit); 
 		
 		ArrayList<Board> list = (ArrayList)sqlSession.selectList("boardMapper.selectList",null,rowBounds);
 		return list; 
 	}//e.selectList
+	
+	public int selectSearchListCount(SqlSession sqlSession, SearchCondition sc) {
+		
+		return sqlSession.selectOne("boardMapper.selectSearchListCount",sc);
+	}//e.selectSearchListCount
+	
+	public ArrayList<Board> selectSearchList(SqlSession sqlSession, SearchCondition sc, PageInfo pi){
+		
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit(); 
+		int limit = pi.getBoardLimit(); 
+		
+		RowBounds rowBounds = new RowBounds(offset, limit); 
+		return (ArrayList)sqlSession.selectList("boardMapper.selectSearchList",sc,rowBounds); 
+	}//e.selectSearchList
+
+	public int updateCount(SqlSession sqlSession, int bno) {
+		
+		return sqlSession.update("boardMapper.updateCount",bno);
+	}//e.updateCount
+	
+	public Board selectBoard(SqlSession sqlSession, int bno) {
+		
+		return sqlSession.selectOne("boardMapper.selectBoard",bno);
+	}//e.selectBoard
+
+	public ArrayList<Reply> selectReplyList(SqlSession sqlSession, int bno) {
+		
+		return (ArrayList)sqlSession.selectList("boardMapper.selectReplyList",bno);
+	}
 }

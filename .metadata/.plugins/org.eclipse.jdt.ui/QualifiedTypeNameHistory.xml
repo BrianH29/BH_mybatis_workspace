@@ -4,8 +4,8 @@
 <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
 <fullyQualifiedTypeName name="com.kh.mybatis.member.model.vo.Member"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="com.kh.mybatis.common.Template"/>
-<fullyQualifiedTypeName name="com.kh.mybatis.common.Pagination"/>
 <fullyQualifiedTypeName name="com.kh.mybatis.common.vo.PageInfo"/>
+<fullyQualifiedTypeName name="com.kh.mybatis.common.Pagination"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
 </qualifiedTypeNameHistroy>
